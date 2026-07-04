@@ -1,0 +1,104 @@
+"use client";
+
+import TopBar from "@/components/layout/TopBar";
+import { Plus, Search, Building, CheckCircle2 } from "lucide-react";
+
+export default function PropertyListPage() {
+  return (
+    <>
+      <TopBar title="সম্পত্তি সমূহ" />
+      <div className="p-6 max-w-7xl mx-auto w-full">
+        <div className="flex justify-between items-center mb-6">
+          <div className="flex items-center gap-4">
+            <h1 className="text-2xl font-bold text-gray-800">সম্পত্তির তালিকা</h1>
+            <span className="bg-indigo-100 text-indigo-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">মোট সম্পত্তি: ০</span>
+          </div>
+          <button className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
+            <Plus className="w-4 h-4" />
+            নতুন সম্পত্তি যোগ করুন
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2">
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden h-full flex flex-col">
+              <div className="p-4 border-b border-gray-200 flex justify-between items-center bg-gray-50/50">
+                <div className="relative w-64">
+                  <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" />
+                  <input 
+                    type="text" 
+                    placeholder="সম্পত্তির নাম বা ঠিকানা..." 
+                    className="pl-9 pr-4 py-2 bg-white border border-gray-300 rounded-md text-sm w-full focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                  />
+                </div>
+              </div>
+              
+              <div className="flex-1 p-8 flex flex-col items-center justify-center text-center min-h-[400px]">
+                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                  <Building className="w-8 h-8 text-gray-400" />
+                </div>
+                <h3 className="text-lg font-medium text-gray-900 mb-1">কোনো সম্পত্তি নেই</h3>
+                <p className="text-gray-500 text-sm max-w-sm">
+                  নতুন বিল্ডিং বা প্লট যোগ করতে ডানদিকের ফর্মটি ব্যবহার করুন।
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="lg:col-span-1">
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden sticky top-24">
+              <div className="p-4 border-b border-gray-200 bg-gray-50/50">
+                <h2 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+                  <Plus className="w-5 h-5 text-indigo-600" />
+                  নতুন সম্পত্তি যোগ
+                </h2>
+              </div>
+              <div className="p-5">
+                <form className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">সম্পত্তির নাম <span className="text-red-500">*</span></label>
+                    <input type="text" placeholder="যেমন: রহমান ম্যানশন" className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">ঠিকানা <span className="text-red-500">*</span></label>
+                    <textarea rows={2} placeholder="বিস্তারিত ঠিকানা" className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">ধরন</label>
+                      <select className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-600 bg-white">
+                        <option value="residential">আবাসিক (Residential)</option>
+                        <option value="commercial">বাণিজ্যিক (Commercial)</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">মোট ইউনিট</label>
+                      <input type="number" placeholder="০" className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">কেয়ারটেকার / ম্যানেজার</label>
+                    <input type="text" placeholder="নাম ও ফোন নম্বর" className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                  </div>
+
+                  <div className="pt-4 flex gap-3">
+                    <button type="button" className="flex-1 bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-50 transition-colors">
+                      বাতিল
+                    </button>
+                    <button type="button" className="flex-1 bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 transition-colors flex items-center justify-center gap-2">
+                      <CheckCircle2 className="w-4 h-4" />
+                      সংরক্ষণ করুন
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
