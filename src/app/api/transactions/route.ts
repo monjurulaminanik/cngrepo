@@ -27,7 +27,7 @@ export async function GET(request: Request) {
 
     const transactions = await Transaction.find(query).sort({ date: -1, createdAt: -1 });
     return NextResponse.json({ success: true, data: transactions });
-  } catch (error) {
+  } catch (error: any) {
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }
@@ -41,7 +41,7 @@ export async function POST(request: Request) {
     const body = await request.json();
     const newTransaction = await Transaction.create(body);
     return NextResponse.json({ success: true, data: newTransaction });
-  } catch (error) {
+  } catch (error: any) {
     return NextResponse.json({ success: false, error: error.message }, { status: 400 });
   }
 }

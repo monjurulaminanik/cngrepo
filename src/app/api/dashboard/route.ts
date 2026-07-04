@@ -147,7 +147,7 @@ export async function GET() {
       }
     });
 
-  } catch (error) {
+  } catch (error: any) {
     console.error("Dashboard API Error:", error);
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }

@@ -12,7 +12,7 @@ export async function GET() {
     }
     const tenants = await Tenant.find({}).sort({ createdAt: -1 });
     return NextResponse.json({ success: true, data: tenants });
-  } catch (error) {
+  } catch (error: any) {
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }
@@ -26,7 +26,7 @@ export async function POST(request: Request) {
     const body = await request.json();
     const newTenant = await Tenant.create(body);
     return NextResponse.json({ success: true, data: newTenant });
-  } catch (error) {
+  } catch (error: any) {
     return NextResponse.json({ success: false, error: error.message }, { status: 400 });
   }
 }

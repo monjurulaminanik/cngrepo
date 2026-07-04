@@ -12,7 +12,7 @@ export async function GET() {
     }
     const drivers = await Driver.find({}).sort({ createdAt: -1 });
     return NextResponse.json({ success: true, data: drivers });
-  } catch (error) {
+  } catch (error: any) {
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }
@@ -26,7 +26,7 @@ export async function POST(request: Request) {
     const body = await request.json();
     const newDriver = await Driver.create(body);
     return NextResponse.json({ success: true, data: newDriver });
-  } catch (error) {
+  } catch (error: any) {
     return NextResponse.json({ success: false, error: error.message }, { status: 400 });
   }
 }

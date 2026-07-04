@@ -30,7 +30,7 @@ export async function GET(request: Request) {
       .sort({ createdAt: -1 });
 
     return NextResponse.json({ success: true, data: attendances });
-  } catch (error) {
+  } catch (error: any) {
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }
@@ -66,7 +66,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ success: true, data: newAttendance });
-  } catch (error) {
+  } catch (error: any) {
     return NextResponse.json({ success: false, error: error.message }, { status: 400 });
   }
 }

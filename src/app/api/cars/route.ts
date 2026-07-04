@@ -12,7 +12,7 @@ export async function GET() {
     }
     const cars = await Car.find({}).sort({ createdAt: -1 });
     return NextResponse.json({ success: true, data: cars });
-  } catch (error) {
+  } catch (error: any) {
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }
@@ -26,7 +26,7 @@ export async function POST(request: Request) {
     const body = await request.json();
     const newCar = await Car.create(body);
     return NextResponse.json({ success: true, data: newCar });
-  } catch (error) {
+  } catch (error: any) {
     return NextResponse.json({ success: false, error: error.message }, { status: 400 });
   }
 }
